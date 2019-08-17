@@ -1,0 +1,97 @@
+{
+  "count": 1,
+  "start": 0,
+  "total": 37,
+  "subjects": [
+    {
+      "rating": {
+        "max": 10,
+        "average": 5.9,
+        "details": {
+          "1": 141.0,
+          "3": 805.0,
+          "2": 367.0,
+          "5": 109.0,
+          "4": 351.0
+        },
+        "stars": "30",
+        "min": 0
+      },
+      "genres": [
+        "\u52a8\u4f5c",
+        "\u72af\u7f6a"
+      ],
+      "title": "\u6c89\u9ed8\u7684\u8bc1\u4eba",
+      "casts": [
+        {
+          "avatars": {
+            "small": "https://img1.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p1382184082.17.jpg",
+            "large": "https://img1.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p1382184082.17.jpg",
+            "medium": "https://img1.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p1382184082.17.jpg"
+          },
+          "name_en": "Nick Cheung",
+          "name": "\u5f20\u5bb6\u8f89",
+          "alt": "https:\/\/movie.douban.com\/celebrity\/1037273\/",
+          "id": "1037273"
+        },
+        {
+          "avatars": {
+            "small": "https://img1.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p1417797081.77.jpg",
+            "large": "https://img1.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p1417797081.77.jpg",
+            "medium": "https://img1.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p1417797081.77.jpg"
+          },
+          "name_en": "Zi Yang",
+          "name": "\u6768\u7d2b",
+          "alt": "https:\/\/movie.douban.com\/celebrity\/1314124\/",
+          "id": "1314124"
+        },
+        {
+          "avatars": {
+            "small": "https://img3.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p59065.jpg",
+            "large": "https://img3.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p59065.jpg",
+            "medium": "https://img3.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p59065.jpg"
+          },
+          "name_en": "Richie Jen",
+          "name": "\u4efb\u8d24\u9f50",
+          "alt": "https:\/\/movie.douban.com\/celebrity\/1009888\/",
+          "id": "1009888"
+        }
+      ],
+      "durations": [
+        "94\u5206\u949f"
+      ],
+      "collect_count": 24813,
+      "mainland_pubdate": "2019-08-16",
+      "has_video": false,
+      "original_title": "\u6c89\u9ed8\u7684\u8bc1\u4eba",
+      "subtype": "movie",
+      "directors": [
+        {
+          "avatars": {
+            "small": "https://img3.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p21181.jpg",
+            "large": "https://img3.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p21181.jpg",
+            "medium": "https://img3.doubanio.com\/view\/celebrity\/s_ratio_celebrity\/public\/p21181.jpg"
+          },
+          "name_en": "Renny Harlin",
+          "name": "\u96f7\u5c3c\u00b7\u54c8\u6797",
+          "alt": "https:\/\/movie.douban.com\/celebrity\/1032052\/",
+          "id": "1032052"
+        }
+      ],
+      "pubdates": [
+        "2019-03-18(\u9999\u6e2f\u56fd\u9645\u7535\u5f71\u8282)",
+        "2019-08-16(\u4e2d\u56fd\u5927\u9646)",
+        "2019-08-22(\u9999\u6e2f)"
+      ],
+      "year": "2019",
+      "images": {
+        "small": "https://img3.doubanio.com\/view\/photo\/s_ratio_poster\/public\/p2564369311.jpg",
+        "large": "https://img3.doubanio.com\/view\/photo\/s_ratio_poster\/public\/p2564369311.jpg",
+        "medium": "https://img3.doubanio.com\/view\/photo\/s_ratio_poster\/public\/p2564369311.jpg"
+      },
+      "alt": "https:\/\/movie.douban.com\/subject\/26816090\/",
+      "id": "26816090"
+    }
+  ],
+  "title": "\u6b63\u5728\u4e0a\u6620\u7684\u7535\u5f71-\u6df1\u5733"
+}
