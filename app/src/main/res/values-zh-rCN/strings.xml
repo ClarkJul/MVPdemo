@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MVP示例</string>
+    <string name="action_settings">设置</string>
+
+    <string name="hello_blank_fragment">哈哈哈</string>
+    <string name="view_pager_book_title">书籍</string>
+    <string name="view_pager_movies_title">电影</string>
+</resources>
