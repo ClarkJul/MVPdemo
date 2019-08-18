@@ -12,30 +12,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.clark.mvpdemo.Constant;
 import com.clark.mvpdemo.R;
-import com.clark.mvpdemo.api.DouBanManager;
-import com.clark.mvpdemo.api.IDoubanService;
-import com.clark.mvpdemo.bean.HotMoviesInfo;
 import com.clark.mvpdemo.bean.Movies;
+import com.clark.mvpdemo.movies.MoviesContract;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-
-public class MoviesFragment extends Fragment {
+public class MoviesFragment extends Fragment implements MoviesContract.IView {
     private static final String TAG=Constant.APP_TAG+MoviesFragment.class.getSimpleName();
 
     private List<Movies> moviesInfoList=new ArrayList<>();
     private RecyclerView rvHotMovies;
+    private ProgressBar pbLoadingView;
     private MoviesAdapter adapter;
+
+    private MoviesContract.IPresenter presenter;
 
     public MoviesFragment() {
 
@@ -61,6 +59,7 @@ public class MoviesFragment extends Fragment {
 
     private void initView(View view) {
         rvHotMovies = view.findViewById(R.id.recycler_hot_movies);
+        pbLoadingView=view.findViewById(R.id.pb_loading);
     }
 
     @Override
@@ -81,40 +80,44 @@ public class MoviesFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         Log.d(TAG, "-->onAttach: "+context.getClass().getSimpleName());
-        loadMovies(new Callback<HotMoviesInfo>() {
-            @Override
-            public void onResponse(Call<HotMoviesInfo> call, Response<HotMoviesInfo> response) {
-                //获取电影数据成功
-                Log.d(TAG,"-->onResponse:Thread.id= "+Thread.currentThread().getId());
-                moviesInfoList=response.body().getMovies();
-                Log.e(TAG,  "onResponse: size= "+moviesInfoList.size());
-                for (Movies m: moviesInfoList) {
-                    Log.d(TAG, "onResponse: "+m.getTitle());
-                }
-                if (moviesInfoList!=null){
-                    adapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<HotMoviesInfo> call, Throwable t) {
-                //获取电影数据失败
-                Log.d(TAG, "-->onFailure:Thread.id= "+Thread.currentThread().getId() +",Error:"+t.getMessage());
-
-            }
-        });
         super.onAttach(context);
+        if (presenter!=null){
+            presenter.start();
+        }
     }
 
-    /**
-     * 请求电影数据的方法
-     * @param callback
-     */
-    private void loadMovies(Callback<HotMoviesInfo> callback){
-        Log.d(TAG, "loadMovies: ");
-        IDoubanService moviesService=DouBanManager.createDoubanService();
-        moviesService.searchHotMovies(Constant.DOUBAN_APIKEY,"深圳",0,10,null,null).enqueue(callback);
+    @Override
+    public void showMovies(List<Movies> movies) {
+        if (moviesInfoList.size()>0){
+            moviesInfoList.clear();
+        }
+        moviesInfoList=movies;
+        adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void showNoMovies() {
+
+    }
+
+    @Override
+    public void setLoading(boolean active) {
+        if (pbLoadingView==null) return;
+        if (active){
+            //显示loadingView
+            pbLoadingView.setVisibility(View.VISIBLE);
+        }else {
+            //隐藏loadingView
+            pbLoadingView.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void setPresenter(MoviesContract.IPresenter presenter) {
+        //结合Presenter类的presenter
+        this.presenter=presenter;
+    }
+
 
     class MoviesAdapter extends RecyclerView.Adapter{
 

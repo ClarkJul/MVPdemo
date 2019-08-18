@@ -16,8 +16,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.clark.mvpdemo.api.DouBanManager;
 import com.clark.mvpdemo.fragment.BooksFragment;
 import com.clark.mvpdemo.fragment.MoviesFragment;
+import com.clark.mvpdemo.movies.MoviesContract;
+import com.clark.mvpdemo.movies.MoviesPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +52,10 @@ public class HomeActivity extends AppCompatActivity {
         initData();
 
     }
+    private void createPresenter(MoviesContract.IView iView){
+        Log.d(TAG, "createPresenter: MoviesPresenter,iView="+iView);
+        new MoviesPresenter(iView,DouBanManager.createDoubanService());
+    }
 
     private void initView() {
         mainTab=findViewById(R.id.main_tab);
@@ -57,10 +64,15 @@ public class HomeActivity extends AppCompatActivity {
 
     private void initData() {
         adapter=new MainViewPagerAdapter(getSupportFragmentManager());
+
+        MoviesFragment moviesFragment=new MoviesFragment();
+        adapter.addFragment(moviesFragment,getString(R.string.view_pager_movies_title));
         adapter.addFragment(new BooksFragment(),getString(R.string.view_pager_book_title));
-        adapter.addFragment(new MoviesFragment(),getString(R.string.view_pager_movies_title));
         mainPager.setAdapter(adapter);
         mainTab.setupWithViewPager(mainPager);
+
+        //将view和presenter结合起来
+        createPresenter(moviesFragment);
     }
 
     @Override
