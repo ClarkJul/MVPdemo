@@ -5,4 +5,5 @@
     <string name="hello_blank_fragment">哈哈哈</string>
     <string name="view_pager_book_title">书籍</string>
     <string name="view_pager_movies_title">电影</string>
+    <string name="hot_movies">影院热映</string>
 </resources>
