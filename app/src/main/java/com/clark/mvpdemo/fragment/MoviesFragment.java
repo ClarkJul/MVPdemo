@@ -1,9 +1,13 @@
 package com.clark.mvpdemo.fragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,11 +20,14 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.clark.mvpdemo.Constant;
 import com.clark.mvpdemo.R;
 import com.clark.mvpdemo.bean.Movies;
 import com.clark.mvpdemo.movies.MoviesContract;
+import com.clark.mvpdemo.movies_detail.MoviesDetailActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -136,6 +143,19 @@ public class MoviesFragment extends Fragment implements MoviesContract.IView {
             holder.movieTitle.setText(m.getTitle());
             holder.ratingStar.setNumStars((int) (m.getRating().getAverage()/2));
             holder.movieAverage.setText(m.getRating().getAverage()+"");
+            Glide.with(getActivity()).load(m.getImages().getLarge()).into(holder.movieCover);
+            holder.itemView.setOnClickListener(view->{
+                Context context = getContext();
+                if (context == null) return;
+                Intent intent = new Intent(context, MoviesDetailActivity.class);
+                intent.putExtra("movies", (Serializable) m);
+                if (context instanceof Activity) {
+                    Activity activity = (Activity) context;
+
+                    Bundle bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, holder.movieAverage, "cover").toBundle();
+                    ActivityCompat.startActivity(activity, intent, bundle);
+                }
+            });
         }
 
         @Override

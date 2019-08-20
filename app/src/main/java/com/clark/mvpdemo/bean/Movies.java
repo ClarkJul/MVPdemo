@@ -2,9 +2,10 @@ package com.clark.mvpdemo.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Movies {
+public class Movies implements Serializable {
     /**
      * rating : {"max":10,"average":5.9,"details":{"1":141,"3":805,"2":367,"5":109,"4":351},"stars":"30","min":0}
      * genres : ["动作","犯罪"]
@@ -169,7 +170,7 @@ public class Movies {
         this.pubdates = pubdates;
     }
 
-    public static class RatingBean {
+    public static class RatingBean implements Serializable{
         /**
          * max : 10
          * average : 5.9
@@ -224,7 +225,7 @@ public class Movies {
             this.min = min;
         }
 
-        public static class DetailsBean {
+        public static class DetailsBean implements Serializable {
             /**
              * 1 : 141.0
              * 3 : 805.0
@@ -286,7 +287,7 @@ public class Movies {
         }
     }
 
-    public static class ImagesBean {
+    public static class ImagesBean implements Serializable{
         /**
          * small : https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2564369311.jpg
          * large : https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2564369311.jpg
@@ -322,7 +323,7 @@ public class Movies {
         }
     }
 
-    public static class CastsBean {
+    public static class CastsBean implements Serializable{
         /**
          * avatars : {"small":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1382184082.17.jpg","large":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1382184082.17.jpg","medium":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1382184082.17.jpg"}
          * name_en : Nick Cheung
@@ -377,13 +378,13 @@ public class Movies {
             this.id = id;
         }
 
-        public static class AvatarsBean {
+        public static class AvatarsBean implements Serializable{
             /**
              * small : https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1382184082.17.jpg
              * large : https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1382184082.17.jpg
              * medium : https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1382184082.17.jpg
              */
-
+            private static final long serialVersionUID = 1L;
             private String small;
             private String large;
             private String medium;
@@ -414,7 +415,7 @@ public class Movies {
         }
     }
 
-    public static class DirectorsBean {
+    public static class DirectorsBean implements Serializable{
         /**
          * avatars : {"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p21181.jpg","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p21181.jpg","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p21181.jpg"}
          * name_en : Renny Harlin
@@ -422,7 +423,7 @@ public class Movies {
          * alt : https://movie.douban.com/celebrity/1032052/
          * id : 1032052
          */
-
+        private static final long serialVersionUID = 1L;
         private AvatarsBeanX avatars;
         private String name_en;
         private String name;
@@ -469,7 +470,7 @@ public class Movies {
             this.id = id;
         }
 
-        public static class AvatarsBeanX {
+        public static class AvatarsBeanX implements Serializable {
             /**
              * small : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p21181.jpg
              * large : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p21181.jpg
